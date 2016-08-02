@@ -22,7 +22,7 @@ RUN apt-get clean && apt-get update
 RUN apt-get -y install                  \
     rsyslog                             \
     vim-tiny                            \
-    perl                                \
+    perl                                
 
 COPY rsyslog.conf /etc/rsyslog.conf
 
@@ -57,6 +57,7 @@ RUN set -ex \
 		libc6-dev \
 		libssl-dev \
 		make \
+		xz-utils \
 	' \
 	&& apt-get update && apt-get install -y $buildDeps --no-install-recommends \
 	&& curl -fSL "https://www.python.org/ftp/python/${PYTHON2_VERSION%%[a-z]*}/Python-$PYTHON2_VERSION.tar.xz" -o python.tar.xz \
@@ -98,6 +99,7 @@ RUN set -ex \
 		libc6-dev \
 		libssl-dev \
 		make \
+		xz-utils \
 	' \
 	&& apt-get update && apt-get install -y $buildDeps --no-install-recommends  \
 	&& curl -fSL "https://www.python.org/ftp/python/${PYTHON3_VERSION%%[a-z]*}/Python-$PYTHON3_VERSION.tar.xz" -o python.tar.xz \
