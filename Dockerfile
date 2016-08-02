@@ -89,7 +89,13 @@ RUN set -ex \
 		    \( -type f -a -name '*.pyc' -o -name '*.pyo' \) \
 		\) -exec rm -rf '{}' + \
 	&& apt-get purge -y --auto-remove $buildDeps \
-	&& rm -rf /usr/src/python ~/.cache
+	&& rm -rf /usr/src/python ~/.cache \
+	&& rm -rf /usr/lib/python2*/unittest  \
+    	&& rm -rf /usr/lib/python2*/lib2to3  \
+    	&& rm -rf /usr/lib/python2*/tkinter  \
+    	&& rm -rf /usr/lib/python2*/idlelib  \
+    	&& rm -rf /usr/lib/python2*/email  \
+    	&& rm -rf /usr/lib/python2*/test  
 
 # Install Python3 (based on https://hub.docker.com/_/python/)
 RUN set -ex \
@@ -130,7 +136,13 @@ RUN set -ex \
 		    \( -type f -a -name '*.pyc' -o -name '*.pyo' \) \
 		\) -exec rm -rf '{}' + \
 	&& apt-get purge -y --auto-remove $buildDeps \
-	&& rm -rf /usr/src/python ~/.cache
+	&& rm -rf /usr/src/python ~/.cache \
+	&& rm -rf /usr/lib/python3*/unittest  \
+    	&& rm -rf /usr/lib/python3*/lib2to3  \
+    	&& rm -rf /usr/lib/python3*/tkinter  \
+    	&& rm -rf /usr/lib/python3*/idlelib  \
+    	&& rm -rf /usr/lib/python3*/email  \
+    	&& rm -rf /usr/lib/python3*/test
 
 ## Clean up
 RUN apt-get clean -y && apt-get autoclean -y && apt-get autoremove -y
